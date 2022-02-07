@@ -56,6 +56,7 @@ redisclusterwithsentinel_sentinel_1   entrypoint.sh                    Up      6
 redisclusterwithsentinel_slave_1      docker-entrypoint.sh redis ...   Up      6379/tcp 
 ```
 **No problem. Now let's test whether the sentinel mode works. If the main database is down for some reason, can the slave database automatically switch roles**
+
 **We can manually stop the container process of the main database to simulate downtime**
 ```
 docker stop redissentinel_master_1
