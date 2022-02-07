@@ -111,5 +111,7 @@ docker-compose exec sentinel redis-cli -p 26379 SENTINEL get-master-addr-by-name
 
 [https://programmer.help/blogs/building-redis-highly-available-cluster-sentinel-mode-based-on-docker-compose.html][2]
 
+[1]: https://github.com/mustafaileri/redis-cluster-with-sentinel
+[2]: https://programmer.help/blogs/building-redis-highly-available-cluster-sentinel-mode-based-on-docker-compose.html
 
 
