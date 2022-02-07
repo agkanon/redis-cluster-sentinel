@@ -45,15 +45,17 @@ If you want to run in the background, you can add the - d parameter
 **set 123 123 in the main library 6379, and then get 123 in the slave Library**
 Check the status of redis cluster
 ```
-docker-compose ps
+docker ps
 ```
 The result is 
 ```
                Name                              Command               State    Ports   
 ---------------------------------------------------------------------------------------
-redisclusterwithsentinel_master_1     docker-entrypoint.sh redis ...   Up      6379/tcp 
-redisclusterwithsentinel_sentinel_1   entrypoint.sh                    Up      6379/tcp 
-redisclusterwithsentinel_slave_1      docker-entrypoint.sh redis ...   Up      6379/tcp 
+redis-cluster-sentinel_sentinel2   "sentinel-entrypoint…"               UP      6379/tcp, 26379/tcp                      
+redis-cluster-sentinel_sentinel1   "sentinel-entrypoint…"               UP      6379/tcp, 26379/tcp                      
+redis-cluster-sentinel_slave2_1    "docker-entrypoint.s…"               UP      0.0.0.0:6381->6379/tcp, :::6381->6379/tcp   
+redis-cluster-sentinel_slave1_1    "docker-entrypoint.s…"               UP      0.0.0.0:6380->6379/tcp, :::6380->6379/tcp   
+redis-cluster-sentinel_master_1    "docker-entrypoint.s…"               UP      0.0.0.0:6379->6379/tcp, :::6379->6379/tcp   
 ```
 **No problem. Now let's test whether the sentinel mode works. If the main database is down for some reason, can the slave database automatically switch roles**
 
