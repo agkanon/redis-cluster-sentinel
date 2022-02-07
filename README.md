@@ -6,8 +6,8 @@ There are following services in the cluster,
 * master: Master Redis Server
 * slave1:  Slave Redis Server
 * slave2:  Slave Redis Server
-* sentinel: Sentinel Server
-
+* sentinel1: Sentinel Server
+* sentinel2: Sentinel Server
 
 The sentinels are configured with a "mymaster" instance with the following properties -
 
@@ -62,49 +62,6 @@ redis-cluster-sentinel_master_1    "docker-entrypoint.s…"               UP    
 **We can manually stop the container process of the main database to simulate downtime**
 ```
 docker stop redissentinel_master_1
-```
-
-Scale out the instance number of sentinel
-
-```
-docker-compose scale sentinel=3
-```
-
-Scale out the instance number of slaves
-
-```
-docker-compose scale slave=4
-```
-
-Check the status of redis cluster
-
-```
-docker-compose ps
-```
-
-The result is 
-
-```
-               Name                              Command               State    Ports   
----------------------------------------------------------------------------------------
-redisclusterwithsentinel_master_1     docker-entrypoint.sh redis ...   Up      6379/tcp 
-redisclusterwithsentinel_sentinel_1   entrypoint.sh                    Up      6379/tcp 
-redisclusterwithsentinel_sentinel_2   entrypoint.sh                    Up      6379/tcp 
-redisclusterwithsentinel_sentinel_3   entrypoint.sh                    Up      6379/tcp 
-redisclusterwithsentinel_slave_1      docker-entrypoint.sh redis ...   Up      6379/tcp 
-redisclusterwithsentinel_slave_2      docker-entrypoint.sh redis ...   Up      6379/tcp 
-redisclusterwithsentinel_slave_3      docker-entrypoint.sh redis ...   Up      6379/tcp 
-redisclusterwithsentinel_slave_4      docker-entrypoint.sh redis ...   Up      6379/tcp 
-```
-
-For stop master redis server.
-```
- docker-compose unpause master
-```
-And get the sentinel infomation with following commands
-
-```
-docker-compose exec sentinel redis-cli -p 26379 SENTINEL get-master-addr-by-name mymaster
 ```
 
 ## References
