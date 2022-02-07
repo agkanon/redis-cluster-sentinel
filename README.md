@@ -40,7 +40,7 @@ docker-compose up --force-recreate
 ```
 If you want to run in the background, you can add the - d parameter
 
-**At this time, we can test whether the synchronization is successful. Open three windows to log in to redis, redis cli-p 6379, redis cli-p 6380, redis cli-p 6381**
+**At this time, we can test whether the synchronization is successful. Open three windows to log in to redis, redis-cli -p 6379, redis-cli -p 6380, redis-cli -p 6381**
 
 **set 123 123 in the main library 6379, and then get 123 in the slave Library**
 Check the status of redis cluster
