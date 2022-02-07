@@ -63,6 +63,7 @@ redis-cluster-sentinel_master_1    "docker-entrypoint.s…"               UP    
 ```
 docker stop redissentinel_master_1
 ```
+**At this time, the master database is no longer connected. We enter the slave database and use the info command to view the role of the slave database**
 
 ## References
 
