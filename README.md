@@ -40,7 +40,8 @@ docker-compose up --force-recreate
 ```
 If you want to run in the background, you can add the - d parameter
 **At this time, we can test whether the synchronization is successful. Open three windows to log in to redis, redis cli-p 6379, redis cli-p 6380, redis cli-p 6381
-set 123 123 in the main library 6379, and then get 123 in the slave Library
+
+**set 123 123 in the main library 6379, and then get 123 in the slave Library
 Check the status of redis cluster
 ```
 docker-compose ps
@@ -52,6 +53,11 @@ The result is
 redisclusterwithsentinel_master_1     docker-entrypoint.sh redis ...   Up      6379/tcp 
 redisclusterwithsentinel_sentinel_1   entrypoint.sh                    Up      6379/tcp 
 redisclusterwithsentinel_slave_1      docker-entrypoint.sh redis ...   Up      6379/tcp 
+```
+**No problem. Now let's test whether the sentinel mode works. If the main database is down for some reason, can the slave database automatically switch roles
+**We can manually stop the container process of the main database to simulate downtime
+```
+docker stop redissentinel_master_1
 ```
 
 Scale out the instance number of sentinel
